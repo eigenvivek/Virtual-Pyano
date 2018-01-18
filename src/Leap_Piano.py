@@ -32,7 +32,7 @@ class SampleListener(Leap.Listener):
               
               
         app_width = 500
-        # app_length = 200
+        app_height = 200
         i_box = frame.interaction_box
 
 
@@ -48,22 +48,28 @@ class SampleListener(Leap.Listener):
             
             normalized_tip = i_box.normalize_point(hand_pointables[1].tip_position)
             app_x = app_width  * normalized_tip.x
-            # app_z = app_length * (1 - normalized_tip.z)
+            app_y = app_height * normalized_tip.y
             
             # print "X: %d, Z: %d" % (app_x, app_z)
             
             app_x = round(app_x)
+            app_y = round(app_y)
             
-            if app_x in range(0,99):
-                print "C"
-            elif app_x in range(100,199):
-                print "D"
-            elif app_x in range(200,299):
-                print "E"
-            elif app_x in range(300,399):
-                print "F"
-            elif app_x in range(400,499):
-                print "G"
+            if app_y < 45:
+            
+                if app_x in range(0,99):
+                    print "C"
+                elif app_x in range(100,199):
+                    print "D"
+                elif app_x in range(200,299):
+                    print "E"
+                elif app_x in range(300,399):
+                    print "F"
+                elif app_x in range(400,499):
+                    print "G"
+                    
+            else:
+                print "No note pressed"
             # elif app_x in range(500,599):
             #     print "C"
             
