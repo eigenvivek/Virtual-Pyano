@@ -31,7 +31,7 @@ class SampleListener(Leap.Listener):
         #       frame.id, frame.timestamp, len(frame.hands), len(frame.fingers))
               
               
-        app_width = 600
+        app_width = 500
         # app_length = 200
         i_box = frame.interaction_box
 
@@ -61,11 +61,11 @@ class SampleListener(Leap.Listener):
             elif app_x in range(200,299):
                 print "E"
             elif app_x in range(300,399):
-                print "G"
+                print "F"
             elif app_x in range(400,499):
-                print "A"
-            elif app_x in range(500,599):
-                print "C"
+                print "G"
+            # elif app_x in range(500,599):
+            #     print "C"
             
             
                 
