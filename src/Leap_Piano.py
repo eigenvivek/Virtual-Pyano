@@ -4,8 +4,6 @@ import Leap
 
 
 class SampleListener(Leap.Listener):
-    
-    def __init__(self):
         
     finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
     
@@ -28,12 +26,12 @@ class SampleListener(Leap.Listener):
         # Get the most recent frame and report some basic information
         frame = controller.frame()
         
-        # print "Frame id: %d, timestamp: %d, hands: %d, fingers: %d" % (
-        #       frame.id, frame.timestamp, len(frame.hands), len(frame.fingers))
               
               
         app_width = 500
         app_height = 200
+        
+        
         i_box = frame.interaction_box
 
 

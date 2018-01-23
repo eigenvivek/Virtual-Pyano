@@ -1,5 +1,3 @@
-import sys
-
 """Declare some global values:"""
 # Step values
 R = 0 # Root
@@ -19,6 +17,11 @@ interval_relations = {
     'ahava_raba': [R, H, B, H, W, H, W, W],
     'blues': [R, B, W, H, H, B, W]
 }
+
+# Global plane dimensions
+# These variables should be obtained from the `Leap_Piano.py` file
+app_width = 500
+app_height = 200
 
 """The main class for a piano:"""   
 class Piano:
@@ -50,4 +53,14 @@ class Piano:
             
         scale += scale[0]
         return scale
+        
+        
+    def spatial_piano(self):
+        
+        # The number of keys this piano will have
+        num_keys = len(self.scale)
+        
+        
+        
+    
     
