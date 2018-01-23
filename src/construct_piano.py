@@ -15,23 +15,25 @@ interval_relations = {
     'dorian': [R, W, H, W, W, W, H, W],
     'mixolydian': [R, W, W, H, W, W, H, W],
     'ahava_raba': [R, H, B, H, W, H, W, W],
-    'blues': [R, B, W, H, H, B, W]
+    'blues': [R, B, W, H, H, B, W],
+    'major_pentatonic': [R, W, W, B, W]
 }
 
-# Global plane dimensions
-# These variables should be obtained from the `Leap_Piano.py` file
-app_width = 500
-app_height = 200
+
+
 
 """The main class for a piano:"""   
 class Piano:
-    
+   
+    # Initialize the piano
     def __init__(self, root, mode):
         
         self.root = root
         self.mode = mode
         self.scale = self.make_scale()
+        self.app_width, self.app_height = self.make_ibox()
         
+    # Return the scale the piano will use
     def make_scale(self):
         
         # Find the starting index of the scale
@@ -50,17 +52,21 @@ class Piano:
         for i in range(len(formula)-1):
             index += formula[i]
             scale.append(reordered[index])
-            
+           
         scale += scale[0]
         return scale
         
-        
-    def spatial_piano(self):
+    # Define the plane in which the piano will reside
+    def make_ibox(self, app_height = 200):
         
         # The number of keys this piano will have
         num_keys = len(self.scale)
         
+        # Give the length of the piano
+        app_width = num_keys - 1
+        return app_height, app_width
         
+    # Assign specific notes to spatial regions
+    def spatial_piano(self):
         
-    
-    
+        # 

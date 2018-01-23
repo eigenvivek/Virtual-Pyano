@@ -28,7 +28,7 @@ class SampleListener(Leap.Listener):
         
               
               
-        app_width = 500
+        app_width = 4
         app_height = 200
         
         
@@ -50,23 +50,11 @@ class SampleListener(Leap.Listener):
             app_y = app_height * normalized_tip.y
             
             print "X: %d, Y: %d" % (app_x, app_y)
-            
-            app_x = round(app_x)
-            app_y = round(app_y)
+                        
+            notes = ['C', 'D', 'E', 'F', 'G']
             
             if app_y < 30:
-            
-                if app_x in range(0,99):
-                    print "C"
-                elif app_x in range(100,199):
-                    print "D"
-                elif app_x in range(200,299):
-                    print "E"
-                elif app_x in range(300,399):
-                    print "F"
-                elif app_x in range(400,499) or app_x == 500:
-                    print "G"
-                    
+                print notes[int(app_x)]
             else:
                 print "No note pressed"
             # elif app_x in range(500,599):
