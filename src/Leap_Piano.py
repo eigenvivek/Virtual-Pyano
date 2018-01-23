@@ -1,11 +1,12 @@
-import os, sys, inspect, time, thread
+import sys
 sys.path.insert(0, "../lib")
 import Leap
 
-from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
 class SampleListener(Leap.Listener):
     
+    def __init__(self):
+        
     finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
     
     # Initializing functions
@@ -50,12 +51,12 @@ class SampleListener(Leap.Listener):
             app_x = app_width  * normalized_tip.x
             app_y = app_height * normalized_tip.y
             
-            # print "X: %d, Z: %d" % (app_x, app_z)
+            print "X: %d, Y: %d" % (app_x, app_y)
             
             app_x = round(app_x)
             app_y = round(app_y)
             
-            if app_y < 45:
+            if app_y < 30:
             
                 if app_x in range(0,99):
                     print "C"
@@ -65,7 +66,7 @@ class SampleListener(Leap.Listener):
                     print "E"
                 elif app_x in range(300,399):
                     print "F"
-                elif app_x in range(400,499):
+                elif app_x in range(400,499) or app_x == 500:
                     print "G"
                     
             else:
