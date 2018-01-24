@@ -32,19 +32,13 @@ class SampleListener(Leap.Listener):
         
         app_width = len(piano.scale) - 1
         app_height = 200
+        app_length = 100
         
         i_box = frame.interaction_box
 
 
         for hand in frame.hands:
-
             hand_pointables = hand.pointables
-            # print type(hand_pointables)
-
-            # tip = hand_pointables[1].tip_position # GIVES POSITION OF TIP OF INDEX FINGER!!!!!
-            # print tip
-            
-            normalized_tip = i_box.normalize_point(hand_pointables[1].tip_position)
             
             x_coords = []
             for i in range(len(hand_pointables)):
@@ -52,9 +46,14 @@ class SampleListener(Leap.Listener):
                 normalized_tip = i_box.normalize_point(hand_pointables[i].tip_position)
                 
                 app_y = app_height * normalized_tip.y
+                app_z = app_length * normalized_tip.z
+                app_z = int(round(app_z))
+                print app_y, app_z
+                
                 if app_y < 10:
-                    app_x = app_width  * normalized_tip.x
-                    x_coords.append(app_x)
+                    if app_z in range(40,60):
+                        app_x = app_width * normalized_tip.x
+                        x_coords.append(app_x)
             
             
             

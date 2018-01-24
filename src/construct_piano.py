@@ -11,7 +11,7 @@ note = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 interval_relations = {
     'major': [R, W, W, H, W, W, W, H],
     'natural_minor': [R, W, H, W, W, H, W, W],
-    'harmonic_minor': [R, W, H, W, W, H, B, H],
+    'harmonic_minor': [R , W, H, W, W, H, B, H],
     'dorian': [R, W, H, W, W, W, H, W],
     'mixolydian': [R, W, W, H, W, W, H, W],
     'ahava_raba': [R, H, B, H, W, H, W, W],
