@@ -19,9 +19,6 @@ interval_relations = {
     'major_pentatonic': [R, W, W, B, W]
 }
 
-
-
-
 """The main class for a piano:"""   
 class Piano:
    
@@ -31,7 +28,7 @@ class Piano:
         self.root = root
         self.mode = mode
         self.scale = self.make_scale()
-        self.app_width, self.app_height = self.make_ibox()
+        # self.app_width, self.app_height = self.make_ibox()
         
     # Return the scale the piano will use
     def make_scale(self):
@@ -66,7 +63,4 @@ class Piano:
         app_width = num_keys - 1
         return app_height, app_width
         
-    # Assign specific notes to spatial regions
-    def spatial_piano(self):
-        
-        # 
+    
