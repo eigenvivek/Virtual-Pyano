@@ -1,5 +1,4 @@
 # Virtual-Pyano
-I attempt to build a virtual piano using Python and a Leap Motion Controller! Watch me fail miserably!
 
 Current capabilities:
 As of January 18, 2017, the program tracks the 1-dimensional motion of the index finger (on either hand) and maps the x-position to a note in the C major pentatonic scale.
