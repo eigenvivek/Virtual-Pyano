@@ -6,11 +6,12 @@ import Leap
 
 # Import the Piano class
 import construct_piano
-
 piano = construct_piano.Piano(sys.argv[1], sys.argv[2])
+keys = construct_piano.Keys(piano)
 
-class SampleListener(Leap.Listener):
-    
+# Create the Listener Class
+class Listener(Leap.Listener):
+
     # Initializing functions
     def on_init(self, controller):
         print "Initialized"
@@ -24,58 +25,40 @@ class SampleListener(Leap.Listener):
 
     def on_exit(self, controller):
         print "Exited"
-        
-        
+
+
     def on_frame(self, controller):
         # Get the most recent frame and report some basic information
         frame = controller.frame()
-        
-        app_width = len(piano.scale) - 1
-        app_height = 200
-        app_length = 100
-        
+
+        # Create a box for scaling all positions by
         i_box = frame.interaction_box
 
 
         for hand in frame.hands:
-            hand_pointables = hand.pointables
-            
-            x_coords = []
-            for i in range(len(hand_pointables)):
-                
-                normalized_tip = i_box.normalize_point(hand_pointables[i].tip_position)
-                
-                app_y = app_height * normalized_tip.y
-                app_z = app_length * normalized_tip.z
-                app_z = int(round(app_z))
-                print app_y, app_z
-                
-                if app_y < 10:
-                    if app_z in range(40,60):
-                        app_x = app_width * normalized_tip.x
-                        x_coords.append(app_x)
-            
-            
-            
-            # print "X: %d, Y: %d" % (app_x, app_y)
 
-            if len(x_coords) > 0:
-                pressed = []
-                for i in range(len(x_coords)):
-                    
-                    pressed.append(piano.scale[int(x_coords[i])])
-                    
-                print pressed
-            else:
-                print "No notes pressed!"
-            
-           
+            # Get all the information about the fingers in frame
+            hand_pointables = hand.pointables
+
+            # Find and normalize all tip locations
+            normalized_hand_positions = []
+            for i in range(len(hand_pointables)):
+                tip = hand_pointables[i].tip_position
+                normalized_tip = i_box.normalize_point(tip)
+                normalized_hand_positions.append(normalized_tip)
+
+            # Pass the pointables in the Keys class
+            keys.master(normalized_hand_positions)
+            if len(keys.pressed) != 0:
+                print keys.pressed
+
+
 def main():
     # Print the scale
-    print "The scale is: " + str(piano.scale)
-    
+    print "The scale is: " + str(keys.scale)
+
     # Create a sample listener and controller
-    listener = SampleListener()
+    listener = Listener()
     controller = Leap.Controller()
 
     # Have the sample listener receive events from the controller
